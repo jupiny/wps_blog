@@ -15,14 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.http.response import HttpResponse
+from wpsblog.views import home, room
 
-# MVC Controller
-def home(request):
-    return HttpResponse("hello world")
-
-def room(request, room_id):
-    return HttpResponse("This is a room detail " + room_id)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
