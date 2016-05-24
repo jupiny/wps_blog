@@ -6,10 +6,10 @@
 - 다음 주 안에 블로그를 정확하게 개발한다.
 - 안수찬 강사님을 믿는다.
 
-# 설치할 패키지
+# 파이썬 패키지 설치
 
 1. 일단 Django를 설치하세요
 
 ```
-$ ./python_packages.sh
+$ pip install -r requirements.txt
 ```
