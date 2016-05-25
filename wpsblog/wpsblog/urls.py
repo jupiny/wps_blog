@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from wpsblog.views import home, room
+from wpsblog.views import home, room, news
 
 
 urlpatterns = [
@@ -23,4 +23,5 @@ urlpatterns = [
 
     url(r'^$', home),
     url(r'^rooms/(?P<room_id>\d+)/$',room),
+    url(r'^news/', news),
 ]
