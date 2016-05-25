@@ -1,14 +1,11 @@
 import requests
 import json
 
-from django.http.response import HttpResponse
-from django.conf import settings
+from wpsblog.renderer import render
 
 # MVC Controller
 def home(request):
-	with open(settings.BASE_DIR + "/wpsblog/templates/home.html","r") as template:
-		content = template.read()
-	return HttpResponse(content)
+	return render('home', {'site_name': 'wps blog'})
 
 def room(request, room_id):
 	# 방 번호 ( room_id) 직방의 데이터를 그대로 보여주는 뷰(컨트롤러)
@@ -32,17 +29,18 @@ def news(request):
 				news_list,
 		))
 	
-	with open(settings.BASE_DIR + "/wpsblog/templates/news.html","r") as template:
-		content = template.read()
-		count = len(news_list)
-		news_content = "".join([
-				"<h2>{title}</h2><img src={image_url}><p>{content}</p>".format(
-					title=news.get("title"),
-					image_url=news.get('image'),
-					content=news.get('content'),
-					)
-				for news in news_list
-				])
-		content = content.replace("## count ##", str(count))
-		content = content.replace("## news_content ##", news_content)
-	return HttpResponse(content)
+	
+	count = len(news_list)
+	news_content = "".join([
+			"<h2>{title}</h2><img src={image_url}><p>{content}</p>".format(
+				title=news.get("title"),
+				image_url=news.get('image'),
+				content=news.get('content'),
+				)
+			for news in news_list
+			])
+
+	return render("news", {
+			"count": str(count),
+			"news_content": news_content,
+			})
