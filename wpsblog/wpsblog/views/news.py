@@ -17,7 +17,7 @@ def news(request):
             news_list,
         ))
     return render(
-            request,
-            "news.html",
-            {"news_list": news_list},
-            )
+        request,
+        "news.html",
+        {"news_list": news_list},
+    )

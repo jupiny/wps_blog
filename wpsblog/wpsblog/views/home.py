@@ -6,4 +6,4 @@ def home(request):
         request,
         "home.html",
         {"site_name": "wps_blog"},
-        )
+    )
