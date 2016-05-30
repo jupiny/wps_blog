@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
-def disclaimer(request):
+def about(request):
 	return render(
 			request,
-			"disclaimer.html",
+			"policy/about.html",
+			{}
 			)
+
+
