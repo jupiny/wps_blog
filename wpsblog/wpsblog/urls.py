@@ -24,4 +24,8 @@ urlpatterns = [
     url(r'^$', home, name="home"),
     url(r'^rooms/(?P<room_id>\d+)/$',room),
     url(r'^watcha/$', news, name="news"),
+	url(r'^terms/$', terms, name="terms"),
+	url(r'^privacy/$', privacy, name="privacy"),
+	url(r'^disclaimer/$', disclaimer, name="disclaimer"),
+	url(r'^about/$', about, name="about"),
 ]
