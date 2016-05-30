@@ -1,12 +1,19 @@
-## header ##
+{% extends "base.html" %}
+
+{% block title %}
+News
+{% endblock %}
+
+{% block content %}
 <h1>News</h1>
-<p>This is news page.</p>
-<p>## count ## 개의 영화 정보가 들어있습니다.</p>
-
-<form method="GET" action="/news/">
-	<input type="text" name="search">
-	<input type="submit" value="검색">
-</form>
-
-## news_content ##
-## footer ##
+<p> {{ news_list|length  }}개의 영화가 검색되었습니다.</p>
+<ul>
+	{% for news in news_list %}
+		<li>
+			<h2>{{ news.title }}</h2>
+			<p>{{ news.content }}</p>
+			<img src="{{ news.image }}">
+		</li>
+	{% endfor %}
+</ul>
+{% endblock %}

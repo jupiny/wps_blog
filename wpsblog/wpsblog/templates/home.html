@@ -1,6 +1,11 @@
-## header ##
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
 <h1>Home</h1>
 <p>This is home page.</p>
-
-## site_name ##
-## footer ##
+{{ site_name }}
+{% endblock %}

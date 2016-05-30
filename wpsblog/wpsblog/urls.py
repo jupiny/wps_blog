@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from wpsblog.views import home, room, news
+from wpsblog.views import * 
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^$', home),
+    url(r'^$', home, name="home"),
     url(r'^rooms/(?P<room_id>\d+)/$',room),
-    url(r'^news/', news),
+    url(r'^watcha/$', news, name="news"),
 ]
