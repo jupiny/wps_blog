@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^watcha/$', news, name="news"),
     url(r'^about/us/$', about, name="about"),
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
+    url(r'^posts/$', list, name="post-list"),
+    url(r'^posts/(?P<post_id>\d+)/$', detail, name="post-detail"),
 ]
