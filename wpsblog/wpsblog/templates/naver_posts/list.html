@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+NaverPosts List
+{% endblock %}
+
+{% block content %}
+<h1>NaverPosts List</h1>
+<p>{{ keyword }}로 크롤링된 블로그입니다.</p>
+<p>{{ query }}가 제목에 포함된 블로그입니다.</p>
+<ul>
+	{% for naver_post in naver_posts %}
+    <li>
+        <img src="{{ naver_post.thumbnail_image_url }}" alt="{{ naver_post.title }}"/>
+        <h2>{{ naver_post.title }}</h2>
+        <h3>{{ naver_post.keyword }}</h3>
+        <p>{{ naver_post.content }}</p>
+        <a href="{{ naver_post.original_url }}" target="_blank">원문 바로가기</a>
+    </li>
+	{% endfor %}
+</ul>
+{% endblock %}
+
