@@ -10,4 +10,4 @@ def delete(request, post_id):
 
     return redirect(
             reverse("posts:list"),
-            )
+    )
