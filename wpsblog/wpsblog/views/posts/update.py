@@ -14,4 +14,3 @@ def update(request, post_id):
     post.save()
 
     return redirect(post)
-

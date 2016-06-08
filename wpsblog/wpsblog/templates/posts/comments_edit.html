@@ -14,15 +14,16 @@ Post Detail
 </ul>
 <h2>Comment ({{ post.comment_set.count }})</h2>
 <ul>
-    {% for comment in post.comment_set.all %}
-    <li id="comment-{{ comment.id }}">{{ comment.content }}
-        <span>
-            <a href="{% url "posts:comments-edit" post_id=post.id comment_id=comment.id %}">Edit</a>
-        </span>
-        <span>
-            <a href="{% url "posts:comments-delete" post_id=post.id comment_id=comment.id %}">Delete</a>
-        </span>
-    </li> 
+    {% for post_comment in post.comment_set.all %}
+        {% if comment = post_comment %}
+        <form action="{% url "posts:comments-update" post_id=post.id comment_id=comment.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="content" value="{{ comment.content }}">
+            <input type="submit" value="publish">
+        </form>
+        {% else %}
+            <li id="comment-{{ post_comment.id }}">{{ comment.content }}</li> 
+        {% endif %}
     {% endfor %}
 </ul>
 
@@ -33,3 +34,4 @@ Post Detail
     <input type="submit" value="publish">
 </form>
 {% endblock %}
+

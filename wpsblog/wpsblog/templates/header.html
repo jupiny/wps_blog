@@ -1,7 +1,17 @@
-<h1>Header</h1>
-<ul>
-	<li><a href="{% url "home" %}">home</a></li>
-	<li><a href="{% url "news" %}">news</a></li>
-	<li><a href="{% url "about" %}">about</a></li>
-	<li><a href="{% url "posts:list" %}">post</a></li>
-</ul>
+<header>
+    <h1>Header</h1>
+    <ul>
+	    <li><a href="{% url "home" %}">home</a></li>
+	    <li><a href="{% url "news" %}">news</a></li>
+	    <li><a href="{% url "about" %}">about</a></li>
+	    <li><a href="{% url "posts:list" %}">post</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url "auth:logout" %}">Logout</a></li>
+        <li><a href="{% url "auth:mypage" %}">{{ request.user.username }}</a></li>
+        <p>{{ request.user }}님 환영합니다.</p>
+        {% else %}
+        <li><a href="{% url "auth:login" %}">Login</a></li>
+        <li><a href="{% url "auth:signup" %}">Signup</a></li>
+        {% endif %}
+    </ul>
+</header>

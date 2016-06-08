@@ -5,3 +5,4 @@ from .about import about
 from .policy import terms, disclaimer, privacy
 from .posts import *
 from .naver_posts import naver_posts_list
+from .auth import *

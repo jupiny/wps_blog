@@ -8,7 +8,10 @@ Post List
 <h1>Post List</h1>
 <ul>
 	{% for post in posts %}
-        <li><a href="{% url "posts:detail" post_id=post.id %}"><h4>{{ post.title }}</h4></a></li>
+        <li>
+        <img src="{{ post.get_image_url }}" alt="{{ post.title }}">
+        </li>
+        <li><a href="{% url "posts:detail" post_id=post.id %}"><h4>{{ post.title }}<span>({{ post.comment_set.count }})</span></h4></a></li>
 		<li><p>{{ post.content }}</p></li>
 	{% endfor %}
 </ul>

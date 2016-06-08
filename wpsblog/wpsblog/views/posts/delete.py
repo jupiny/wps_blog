@@ -1,5 +1,5 @@
 from django.core.urlresolvers import reverse
-from django.shortcuts import redirect 
+from django.shortcuts import redirect
 
 from wpsblog.models import Post
 
@@ -9,5 +9,5 @@ def delete(request, post_id):
     post.delete()
 
     return redirect(
-            reverse("posts:list"),
+        reverse("posts:list"),
     )
