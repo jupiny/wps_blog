@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from wpsblog.models import Post 
+from wpsblog.models import Post
 
 
 def comments_create(request, post_id):
@@ -11,11 +11,13 @@ def comments_create(request, post_id):
     )
     return redirect(comment)
 
+
 def comments_delete(request, post_id, comment_id):
     post = Post.objects.get(id=post_id)
     comment = post.comment_set.get(id=comment_id)
     comment.delete()
     return redirect(post)
+
 
 def comments_edit(request, post_id, comment_id):
     post = Post.objects.get(id=post_id)
@@ -29,10 +31,10 @@ def comments_edit(request, post_id, comment_id):
         },
     )
 
+
 def comments_update(request, post_id, comment_id):
     post = Post.objects.get(id=post_id)
     comment = post.comment_set.get(id=comment_id)
-    
     content = request.POST.get("content")
     comment.content = content
     comment.save()

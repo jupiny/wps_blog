@@ -10,14 +10,13 @@ def login(request):
 
         user = authenticate(username=username, password=password)
         if user:
-            auth_login(request, user) 
+            auth_login(request, user)
             return redirect(
                 reverse("home")
             )
         return redirect(
             "auth:login"
         )
-        
     return render(
         request,
         "auth/login.html",

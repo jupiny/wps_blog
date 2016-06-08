@@ -42,7 +42,7 @@ class Post(models.Model):
                 "post_id": self.id,
             }
         )
-    
+
     def get_image_url(self):
         if self.image:
             return self.image.url
