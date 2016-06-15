@@ -1,12 +1,13 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 
 class Comment(models.Model):
 
     # 같은 어플리케이션 안에 있을 때 이렇게 부를 수 있음
     post = models.ForeignKey("Post")
-
+    user = models.ForeignKey(User)
     content = models.TextField()
 
     def __str__(self):
@@ -16,6 +17,6 @@ class Comment(models.Model):
         return reverse(
             "posts:detail",
             kwargs={
-                "post_id": self.post.id,
+                "pk": self.post.id,
             },
         ) + "#comment-" + str(self.id)

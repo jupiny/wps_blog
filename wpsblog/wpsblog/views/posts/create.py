@@ -1,17 +1,16 @@
+from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
 
-from wpsblog.models import Post
+from .base import PostBaseView
 
 
-def create(request):
-    title = request.POST.get("title")
-    content = request.POST.get("content")
-    image = request.FILES.get("image")
+class PostCreateView(PostBaseView, CreateView):
+    fields = [
+        "title",
+        "content",
+        "image",
+    ]
 
-    post = Post.objects.create(
-        title=title,
-        content=content,
-        image=image
-    )
-
-    return redirect(post)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(PostCreateView, self).form_valid(form)
